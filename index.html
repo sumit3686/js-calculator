@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container1">
+        <input class="input" type="text" id="anw" readonly>
+        <div class="buttons">
+            <div class="button" onclick="dis('+')">+</div>
+            <div class="button" onclick="dis('-')">-</div>
+            <div class="button" onclick="dis('*')">*</div>
+            <div class="button" onclick="dis('/')">/</div>
+            <div class="button" onclick="dis('1')">1</div>
+            <div class="button" onclick="dis('2')">2</div>
+            <div class="button" onclick="dis('3')">3</div>
+            <div class="button" onclick="dis('%')">%</div>
+            <div class="button" onclick="dis('4')">4</div>
+            <div class="button" onclick="dis('5')">5</div>
+            <div class="button" onclick="dis('6')">6</div>
+            <div class="button" onclick="calculateSquareRoot()">√</div>
+            <div class="button" onclick="dis('7')">7</div>
+            <div class="button" onclick="dis('8')">8</div>
+            <div class="button" onclick="dis('9')">9</div>
+            <div class="button" onclick="clearDisplay()">C</div>
+            <div class="button" onclick="dis('0')">0</div>
+            <div class="button" onclick="dis('.')">.</div>
+            <div class="button" onclick="backspace()">←</div>
+            <div class="button" onclick="answer()">=</div>
+            
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functions for calculator functionality
+        function dis(value) {
+            document.getElementById('anw').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('anw').value = '';
+        }
+
+        function answer() {
+            try {
+                document.getElementById('anw').value = eval(document.getElementById('anw').value);
+            } catch (error) {
+                document.getElementById('anw').value = 'Error';
+            }
+        }
+        function backspace() {
+            const Value = document.getElementById('anw').value;
+            document.getElementById('anw').value = Value.slice(0, -1);
+        }
+        function calculateSquareRoot() {
+            const inputValue = document.getElementById('anw').value;
+            const result = Math.sqrt(parseFloat(inputValue));
+            if (!isNaN(result)) {
+                document.getElementById('anw').value = result;
+            } else {
+                document.getElementById('anw').value = 'Error';
+            }
+        }
+    
+        
+
+        
+    </script>
+</body>
+</html>
